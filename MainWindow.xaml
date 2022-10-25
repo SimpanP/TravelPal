@@ -30,8 +30,8 @@
         <TextBlock
             Text="TravelPal"
             Style="{StaticResource travelPalText}"
-            Foreground="#355C7D"
-            Margin="5" />
+            Foreground="#355C7D" 
+            Margin="5"/>
 
 
         <!--The shapes in left side of the window-->
@@ -157,5 +157,6 @@
                     Style="{StaticResource mainButton}"/>
             </StackPanel>
         </Border>
+
     </Grid>
 </Window>
