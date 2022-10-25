@@ -11,57 +11,151 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="1.5*" />
         </Grid.ColumnDefinitions>
-        
+
         <!--Left side of the main login window-->
         <Border CornerRadius="10 0 0 10">
             <Border.Background>
                 <LinearGradientBrush
                     StartPoint="0,0"
-                    EndPoint="1,1" >
+                    EndPoint="1,1">
                     <GradientStop
                         Color="#3CAEA3"
-                        Offset="0"/>
+                        Offset="0" />
                     <GradientStop
                         Color="#3AADA1"
-                        Offset="1"/>
+                        Offset="1" />
                 </LinearGradientBrush>
             </Border.Background>
         </Border>
+        <TextBlock
+            Text="TravelPal"
+            Style="{StaticResource travelPalText}"
+            Foreground="#355C7D"
+            Margin="5" />
+
+
+        <!--The shapes in left side of the window-->
 
         <Grid>
             <Canvas>
                 <Polygon
                     Points="0,20 230,140,0,270"
-                    Fill="#4EB1B6"/>
+                    Fill="#4EB1B6" />
                 <Polygon
                     Points="100, 400 200,370 180,470"
-                    Fill="#4EB1B6"/>
-                <Ellipse 
+                    Fill="#4EB1B6" />
+                <Ellipse
                     Margin="50 400 10 10"
                     Width="30"
                     Height="30"
-                    Fill="#4EB1B6"/>
-                <Ellipse 
+                    Fill="#4EB1B6" />
+                <Ellipse
                     Margin="50 400 40 10"
                     Width="30"
                     Height="30"
-                    Fill="#4EB1B6"/>
+                    Fill="#4EB1B6" />
             </Canvas>
+
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock
+                    Text="Sign Up"
+                    Style="{StaticResource titleText}" />
+                <TextBlock
+                    Text="You will be redirected to another window to complete the registration"
+                    Style="{StaticResource normalText}"
+                    Opacity="0.5"
+                    Margin="20 25  " />
+
+                <Button
+                    Content="Sign Up"
+                    Style="{StaticResource button}" />
+            </StackPanel>
         </Grid>
 
-        <Border 
+
+        <!--The right side of the window-->
+
+        <Border
             Background="#ffffff"
             Grid.Column="1"
             CornerRadius="0 10 10 0">
+            <StackPanel>
+                <TextBlock
+                    Text="Sign in to the application"
+                    Style="{StaticResource titleText}"
+                    Foreground="#355C7D" />
+                <StackPanel
+                    Orientation="Horizontal"
+                    Margin="0 20"
+                    HorizontalAlignment="Center">
+                </StackPanel>
+                <TextBlock
+                    Text="Enter your details below :"
+                    Style="{StaticResource normalText}"
+                    Foreground="DarkGray"
+                    Margin="5" />
 
+                <!--Border för username-->
 
+                <Border
+                    BorderThickness="1.5"
+                    BorderBrush="SlateGray"
+                    Margin="60 10"
+                    CornerRadius="3">
+                    <Grid
+                        Margin="5 5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock
+                            x:Name="textUserName"
+                            MouseDown="TextUserName_OnMouseDown"
+                            Height="20"
+                            Text="Username"
+                            Style="{StaticResource textLoginDetails}" />
+                        <TextBox
+                            x:Name="tbUsername"
+                            TextChanged="TbUsername_OnTextChanged"
+                            Style="{StaticResource textBox}" />
+                    </Grid>
+                </Border>
 
+                <!--Border för lösenord-->
 
+                <Border
+                    BorderThickness="1.5"
+                    BorderBrush="SlateGray"
+                    Margin="60 10"
+                    CornerRadius="3">
+                    <Grid
+                        Margin="5 5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock
+                            x:Name="textPassword"
+                            MouseDown="TextPassword_OnMouseDown"
+                            Height="20"
+                            Text="Password"
+                            Style="{StaticResource textLoginDetails}" />
+                        <PasswordBox
+                            x:Name="tbPassword"
+                            PasswordChanged="TbPassword_OnPasswordChanged"
+                            Style="{StaticResource textBox}" />
+                    </Grid>
+                </Border>
 
-
-
-
+                <Button
+                    Content="Sign In"
+                    Click="SignInButton_Click"
+                    Style="{StaticResource mainButton}" />
+                <Button
+                    Content="Close"
+                    Click="CloseButton_Click"
+                    Style="{StaticResource mainButton}"/>
+            </StackPanel>
         </Border>
-
     </Grid>
 </Window>
