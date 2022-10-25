@@ -5,17 +5,247 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
 
-
+        <!--Setting values for easy use in mainwindow.xaml-->
 
         <Style x:Key="titleText" TargetType="TextBlock">
             <Setter
                 Property="FontSize"
-                Value="30"/>
-<Setter
-    />
-
+                Value="30" />
+            <Setter
+                Property="FontWeight"
+                Value="Bold" />
+            <Setter
+                Property="TextAlignment"
+                Value="Center" />
+            <Setter
+                Property="Foreground"
+                Value="#ffffff" />
         </Style>
 
-         
+        <!--Properties for normaltext written in the app-->
+
+        <Style x:Key="normalText" TargetType="TextBlock">
+            <Setter
+                Property="FontSize"
+                Value="16" />
+            <Setter
+                Property="LineHeight"
+                Value="28" />
+            <Setter
+                Property="TextWrapping"
+                Value="Wrap" />
+            <Setter
+                Property="TextAlignment"
+                Value="Center" />
+            <Setter
+                Property="Foreground"
+                Value="#ffffff" />
+        </Style>
+
+        <!--Properties for buttons in the app-->
+
+        <Style x:Key="button" TargetType="Button">
+            <Setter
+                Property="FontSize"
+                Value="15" />
+            <Setter
+                Property="Width"
+                Value="150" />
+            <Setter
+                Property="Background"
+                Value="Transparent" />
+            <Setter
+                Property="Foreground"
+                Value="#fdfefe" />
+            <Setter
+                Property="FocusVisualStyle"
+                Value="{x:Null}" />
+            <Setter Property="Template">
+
+                <Setter.Value>
+                    <ControlTemplate
+                        TargetType="Button">
+                        <Border
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="25"
+                            BorderThickness="1"
+                            BorderBrush="AntiqueWhite"
+                            Padding="15">
+                            <ContentPresenter
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger
+                    Property="IsMouseOver"
+                    Value="True">
+                    <Setter
+                        Property="Background"
+                        Value="#e8e8e8" />
+                    <Setter
+                        Property="Foreground"
+                        Value="DimGray" />
+                </Trigger>
+                <Trigger
+                    Property="IsMouseCaptured"
+                    Value="True">
+                    <Setter
+                        Property="Background"
+                        Value="#d9d9d9" />
+                    <Setter
+                        Property="Foreground"
+                        Value="DimGray" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!--properties for the normal text in the textbox-->
+
+        <Style x:Key="textLoginDetails" TargetType="TextBlock">
+            <Setter
+                Property="FontSize"
+                Value="14" />
+            <Setter
+                Property="Grid.Column"
+                Value="1" />
+            <Setter
+                Property="Panel.ZIndex"
+                Value="1" />
+            <Setter
+                Property="Margin"
+                Value="5" />
+            <Setter
+                Property="Foreground"
+                Value="LightSlateGray" />
+        </Style>
+
+
+        <Style x:Key="textHint"  TargetType="TextBox">
+            <Setter
+                Property="FontSize"
+                Value="14" />
+            <Setter
+                Property="Grid.Column"
+                Value="1" />
+            <Setter
+                Property="Margin"
+                Value="5" />
+            <Setter
+                Property="Foreground"
+                Value="LightSlateGray" />
+            <Setter
+                Property="BorderBrush"
+                Value="Transparent" />
+            <Setter
+                Property="BorderThickness"
+                Value="1" />
+        </Style>
+
+        <Style x:Key="textBox" TargetType="Control">
+            <Setter
+                Property="FontSize"
+                Value="14" />
+            <Setter
+                Property="Grid.Column"
+                Value="1" />
+            <Setter
+                Property="Margin"
+                Value="5" />
+            <Setter
+                Property="Foreground"
+                Value="LightSlateGray" />
+            <Setter
+                Property="BorderBrush"
+                Value="Transparent" />
+            <Setter
+                Property="BorderThickness"
+                Value="1" />
+        </Style>
+
+            <!--Sign in main sign in button-->
+
+        <Style x:Key="mainButton" TargetType="Button">
+            <Setter
+                Property="FontSize"
+                Value="15" />
+            <Setter
+                Property="Width"
+                Value="180" />
+            <Setter
+                Property="Margin"
+                Value="0 20 0 0" />
+            <Setter
+                Property="Background"
+                Value="#3AB19B" />
+            <Setter
+                Property="Foreground"
+                Value="#fdfefe" />
+            <Setter
+                Property="FocusVisualStyle"
+                Value="{x:Null}" />
+            <Setter Property="Template">
+
+                <Setter.Value>
+                    <ControlTemplate
+                        TargetType="Button">
+                        <Border
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="25"
+                            BorderThickness="1"
+                            BorderBrush="#49B7A3"
+                            Padding="15">
+                            <ContentPresenter
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger
+                    Property="IsMouseOver"
+                    Value="True">
+                    <Setter
+                        Property="Background"
+                        Value="#339685" />
+                    <Setter
+                        Property="Foreground"
+                        Value="White" />
+                </Trigger>
+                <Trigger
+                    Property="IsMouseCaptured"
+                    Value="True">
+                    <Setter
+                        Property="Background"
+                        Value="#4EB1B6" />
+                    <Setter
+                        Property="Foreground"
+                        Value="White" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="travelPalText" TargetType="TextBlock">
+            <Setter
+                Property="FontFamily"
+                Value="Arial" />
+            <Setter
+                Property="FontSize"
+                Value="30" />
+            <Setter
+                Property="FontWeight"
+                Value="Bold" />
+            <Setter
+                Property="TextAlignment"
+                Value="Center" />
+            <Setter
+                Property="Foreground"
+                Value="#ffffff" />
+        </Style>
+
+
     </Application.Resources>
 </Application>
