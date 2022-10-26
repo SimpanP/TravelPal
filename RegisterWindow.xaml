@@ -52,11 +52,96 @@
 
         <Border
             Grid.Column="1"
-            Background="White">
+            Background="WhiteSmoke"
+            CornerRadius="0 10 0 0"
+            Padding="10">
             <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
+                <Grid
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Margin="50,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="130" />
+                        <ColumnDefinition Width="170" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock
+                        Grid.Row="0"
+                        Text="Username :"
+                        Style="{StaticResource textblockRegistrationWindow}"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Height="20"
+                        Margin="20" />
+                    <TextBlock
+                        Grid.Row="1"
+                        Text="Password :"
+                        Style="{StaticResource textblockRegistrationWindow}"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Height="20"
+                        Margin="20" />
+                    <TextBlock
+                        Grid.Row="2"
+                        Text="Country :"
+                        Style="{StaticResource textblockRegistrationWindow}"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Height="20"
+                        Margin="20" />
+                    <TextBox
+                        x:Name="tbUsername"
+                        Grid.Column="1"
+                        Height="20" />
+                    <PasswordBox
+                        x:Name="pbPassword"
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Height="20" />
+                    <ComboBox
+                        x:Name="cbCountry"
+                        Grid.Column="1"
+                        Grid.Row="2" 
+                        Height="20"/>
+
+                    <Grid 
+                        Grid.Column="1"
+                        Grid.Row="3"
+                        Margin="20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Button
+                            x:Name="btnCancel"
+                            Content="Cancel"
+                            Grid.Column="0"
+                            Margin="-54,0,37,0"
+                            Style="{StaticResource btnRegisterWindow}"
+                            Click="ButtonBase_OnClick"/>
+                        <Button
+                            x:Name="btnRegister"
+                            Content="Register"
+                            Grid.Column="2"
+                            Margin="30,0,-84,0"
+                            Style="{StaticResource btnRegisterWindow}"
+                            Click="ButtonBase_OnClick"/>
+
+                    </Grid>
+
+                </Grid>
             </Grid>
         </Border>
 

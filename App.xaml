@@ -123,7 +123,7 @@
         </Style>
 
 
-        <Style x:Key="textHint"  TargetType="TextBox">
+        <Style x:Key="textHint" TargetType="TextBox">
             <Setter
                 Property="FontSize"
                 Value="14" />
@@ -165,7 +165,7 @@
                 Value="1" />
         </Style>
 
-            <!--Sign in main sign in button-->
+        <!--Sign in main sign in button-->
 
         <Style x:Key="mainButton" TargetType="Button">
             <Setter
@@ -228,6 +228,8 @@
             </Style.Triggers>
         </Style>
 
+        <!--Travelpal Text-->
+
         <Style x:Key="travelPalText" TargetType="TextBlock">
             <Setter
                 Property="FontFamily"
@@ -248,7 +250,9 @@
                 Property="TextWrapping"
                 Value="Wrap" />
         </Style>
-        
+
+        <!--GDPR Text-->
+
         <Style x:Key="gdprText" TargetType="TextBlock">
             <Setter
                 Property="FontFamily"
@@ -271,6 +275,83 @@
             <Setter
                 Property="TextWrapping"
                 Value="Wrap" />
+        </Style>
+
+        <Style x:Key="textblockRegistrationWindow" TargetType="TextBlock">
+            <Setter
+                Property="Foreground"
+                Value="#2A363B" />
+            <Setter
+                Property="FontWeight"
+                Value="DemiBold" />
+            <Setter
+                Property="FontSize"
+                Value="15" />
+            <Setter
+                Property="VerticalAlignment"
+                Value="Center" />
+        </Style>
+
+
+        <Style x:Key="btnRegisterWindow" TargetType="Button">
+            <Setter
+                Property="FontSize"
+                Value="15" />
+            <Setter
+                Property="Width"
+                Value="90" />
+            <Setter
+                Property="Margin"
+                Value="0 20 0 0" />
+            <Setter
+                Property="Background"
+                Value="#3AB19B" />
+            <Setter
+                Property="Foreground"
+                Value="#fdfefe" />
+            <Setter
+                Property="FocusVisualStyle"
+                Value="{x:Null}" />
+            <Setter Property="Template">
+
+                <Setter.Value>
+                    <ControlTemplate
+                        TargetType="Button">
+                        <Border
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="25"
+                            BorderThickness="1"
+                            BorderBrush="#49B7A3"
+                            Padding="15">
+                            <ContentPresenter
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger
+                    Property="IsMouseOver"
+                    Value="True">
+                    <Setter
+                        Property="Background"
+                        Value="#339685" />
+                    <Setter
+                        Property="Foreground"
+                        Value="White" />
+                </Trigger>
+                <Trigger
+                    Property="IsMouseCaptured"
+                    Value="True">
+                    <Setter
+                        Property="Background"
+                        Value="#4EB1B6" />
+                    <Setter
+                        Property="Foreground"
+                        Value="White" />
+                </Trigger>
+            </Style.Triggers>
         </Style>
 
 

@@ -15,4 +15,8 @@
     <Resource Include="Pictures\sandDunes.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Classes\" />
+  </ItemGroup>
+
 </Project>

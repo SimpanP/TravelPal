@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using TRAVELPAL.Enums;
 
 namespace TRAVELPAL
 {
@@ -7,9 +8,22 @@ namespace TRAVELPAL
     /// </summary>
     public partial class RegisterWindow : Window
     {
+        private EuropeanCountries europeanCountries = new();
+
         public RegisterWindow()
         {
             InitializeComponent();
         }
+
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            Hide();
+        }
+
+
+
+
     }
 }

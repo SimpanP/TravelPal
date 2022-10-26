@@ -70,7 +70,7 @@ namespace TRAVELPAL
         private void SignUpButton_Click(object sender, RoutedEventArgs e)
         {
             RegisterWindow registerWindow = new();
-            this.Close();
+            Hide();
             registerWindow.Show();
         }
     }
