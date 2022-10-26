@@ -58,12 +58,20 @@ namespace TRAVELPAL
 
         private void SignInButton_Click(object sender, RoutedEventArgs e)
         {
-
+            //TODO, create a new window and open this, send information with the user
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        //open new register window and closes current window
+        private void SignUpButton_Click(object sender, RoutedEventArgs e)
+        {
+            RegisterWindow registerWindow = new();
+            this.Close();
+            registerWindow.Show();
         }
     }
 

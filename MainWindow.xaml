@@ -30,8 +30,8 @@
         <TextBlock
             Text="TravelPal"
             Style="{StaticResource travelPalText}"
-            Foreground="#355C7D" 
-            Margin="5"/>
+            Foreground="#355C7D"
+            Margin="5" />
 
 
         <!--The shapes in left side of the window-->
@@ -68,7 +68,7 @@
 
                 <Button
                     Content="Sign Up"
-                    Style="{StaticResource button}" />
+                    Style="{StaticResource button}" Click="SignUpButton_Click" />
             </StackPanel>
         </Grid>
 
@@ -154,7 +154,7 @@
                 <Button
                     Content="Close"
                     Click="CloseButton_Click"
-                    Style="{StaticResource mainButton}"/>
+                    Style="{StaticResource mainButton}" />
             </StackPanel>
         </Border>
 

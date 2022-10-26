@@ -244,6 +244,33 @@
             <Setter
                 Property="Foreground"
                 Value="#ffffff" />
+            <Setter
+                Property="TextWrapping"
+                Value="Wrap" />
+        </Style>
+        
+        <Style x:Key="gdprText" TargetType="TextBlock">
+            <Setter
+                Property="FontFamily"
+                Value="Arial" />
+            <Setter
+                Property="FontSize"
+                Value="10" />
+            <Setter
+                Property="FontWeight"
+                Value="UltraLight" />
+            <Setter
+                Property="TextAlignment"
+                Value="Center" />
+            <Setter
+                Property="VerticalAlignment"
+                Value="Bottom" />
+            <Setter
+                Property="Foreground"
+                Value="#ffffff" />
+            <Setter
+                Property="TextWrapping"
+                Value="Wrap" />
         </Style>
 
 
