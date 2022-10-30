@@ -95,14 +95,14 @@
                         Grid.Row="2"
                         Text="Country :"
                         Style="{StaticResource textblockRegistrationWindow}"
-                        VerticalAlignment="Center"
                         HorizontalAlignment="Center"
                         Height="20"
                         Margin="20" />
                     <TextBox
-                        x:Name="tbUsername"
+                        x:Name="tbUsernameReg"
                         Grid.Column="1"
-                        Height="20" />
+                        Height="20" 
+                        TextChanged="TbUsernameReg_OnTextChanged"/>
                     <PasswordBox
                         x:Name="pbPassword"
                         Grid.Column="1"
@@ -130,14 +130,14 @@
                             Grid.Column="0"
                             Margin="-54,0,37,0"
                             Style="{StaticResource btnRegisterWindow}"
-                            Click="ButtonBase_OnClick"/>
+                            Click="BtnCancel_OnClick"/>
                         <Button
                             x:Name="btnRegister"
                             Content="Register"
                             Grid.Column="2"
                             Margin="30,0,-84,0"
                             Style="{StaticResource btnRegisterWindow}"
-                            Click="ButtonBase_OnClick"/>
+                            Click="BtnRegister_OnClick"/>
 
                     </Grid>
 
