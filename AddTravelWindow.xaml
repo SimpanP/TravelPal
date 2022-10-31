@@ -84,7 +84,7 @@
             Grid.Row="3"
             Height="20"
             HorizontalAlignment="Left"
-            Width="120"
+            Width="1"
             Margin="10 0 10 0"/>
 
     </Grid>

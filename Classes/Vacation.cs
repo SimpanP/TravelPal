@@ -1,10 +1,22 @@
-﻿namespace TRAVELPAL.Classes
+﻿using TRAVELPAL.Enums;
+
+namespace TRAVELPAL.Classes
 {
-    internal class Vacation : Travel
+    public class Vacation : Travel
     {
+        public bool AllInclusive { get; set; }
 
 
+        public Vacation(bool allInclusive, string destination, Countries country, int travelers) : base(destination,
+            country, travelers)
+        {
+            AllInclusive = allInclusive;
+        }
 
+
+        public string GetInfo()
+        {
+            return base.GetInfo();
+        }
     }
-
 }
