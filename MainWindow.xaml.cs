@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using TRAVELPAL.Managers;
 
 namespace TRAVELPAL
 {
@@ -9,13 +10,27 @@ namespace TRAVELPAL
     /// </summary>
     public partial class MainWindow : Window
     {
+        private UserManager travelManager = new();
+        private TravelManager userManager = new();
+
         public MainWindow()
         {
             InitializeComponent();
         }
 
 
-
+        //Trial and error
+        public MainWindow(UserManager travelManager, TravelManager userManager, TextBlock textUserName,
+            TextBox tbUsername, TextBlock textPassword, PasswordBox tbPassword, bool contentLoaded)
+        {
+            this.travelManager = travelManager;
+            this.userManager = userManager;
+            this.textUserName = textUserName;
+            this.tbUsername = tbUsername;
+            this.textPassword = textPassword;
+            this.tbPassword = tbPassword;
+            _contentLoaded = contentLoaded;
+        }
 
         private void TextUserName_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -35,13 +50,10 @@ namespace TRAVELPAL
         }
 
 
-
-
         private void TextPassword_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
             tbPassword.Focus();
         }
-
 
 
         private void TbPassword_OnPasswordChanged(object sender, RoutedEventArgs e)
@@ -69,12 +81,9 @@ namespace TRAVELPAL
         //open new register window and closes current window
         private void SignUpButton_Click(object sender, RoutedEventArgs e)
         {
-            RegisterWindow registerWindow = new();
+            RegisterWindow registerWindow = new(userManager, travelManager);
             Hide();
             registerWindow.Show();
         }
     }
-
-
-
 }

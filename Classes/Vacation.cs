@@ -14,9 +14,9 @@ namespace TRAVELPAL.Classes
         }
 
 
-        public string GetInfo()
-        {
-            return base.GetInfo();
-        }
+        //public string GetInfo()
+        //{
+        //    return base.GetInfo();
+        //}
     }
 }

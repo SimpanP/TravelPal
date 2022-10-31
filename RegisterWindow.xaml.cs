@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using TRAVELPAL.Enums;
@@ -11,6 +12,7 @@ namespace TRAVELPAL
     /// </summary>
     public partial class RegisterWindow : Window
     {
+        public Countries countries = new();
         public EuropeanCountries europeanCountries = new();
         private UserManager userManager = new();
         private TravelManager travelManager = new();
@@ -21,9 +23,9 @@ namespace TRAVELPAL
 
 
             //Populating the combobox with the countries
-            string[] EuropeanCountries = Enum.GetNames(typeof(EuropeanCountries));
+            string[] countries = Enum.GetNames(typeof(Countries));
 
-            foreach (string Countries in EuropeanCountries)
+            foreach (string Countries in countries)
             {
                 cbCountry.Items.Add(Countries);
             }
@@ -38,9 +40,6 @@ namespace TRAVELPAL
         }
 
 
-        
-
-
         //Cancel buttons closes the register window and opens the main window once again
         private void BtnCancel_OnClick(object sender, RoutedEventArgs e)
         {
@@ -53,14 +52,25 @@ namespace TRAVELPAL
         //Register button should save the input data and open mainwindow
         private void BtnRegister_OnClick(object sender, RoutedEventArgs e)
         {
-            
             string userName = tbUsernameReg.Text;
-            string password = pb
-            
+            string password = pbPasswordBox.Password;
+            string country = cbCountry.Text;
+            //Converting country to a string to be able to save it
+            Countries selectedCountry = (Countries)Enum.Parse(typeof(Countries), country);
+
+
             //MainWindow mainWindow = new();
             //mainWindow.Show();
             //Close();
+
+            //Check if user already exists / else add the user to the application
+
+            if (userName.Length == 0 || password.Length == 0 || country.Length == 0)
+            {
+                MessageBox.Show("User already exists or you've not filled in all fields");
+            }
         }
+
 
         private void TbUsernameReg_OnTextChanged(object sender, TextChangedEventArgs e)
         {
