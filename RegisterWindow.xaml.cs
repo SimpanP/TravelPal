@@ -29,7 +29,6 @@ namespace TRAVELPAL
             {
                 MessageBox.Show("The field can not be empty!");
             }
-
         }
 
 
@@ -61,8 +60,11 @@ namespace TRAVELPAL
 
         private void TbUsernameReg_OnTextChanged(object sender, TextChangedEventArgs e)
         {
-
         }
 
+        private void tbConfirmPassword_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
