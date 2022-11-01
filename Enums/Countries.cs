@@ -1,10 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Xml.Linq;
 
-namespace TRAVELPAL.Enums
-{
-    public enum Countries
-    {
+namespace TRAVELPAL.Enums {
+    public enum Countries {
         Afghanistan,
         [Display(Name = "Åland Islands")] Åland_Islands,
         Albania,
@@ -14,7 +11,6 @@ namespace TRAVELPAL.Enums
         Angola,
         Anguilla,
         Antarctica,
-
         [Display(Name = "Antigua and Barbuda")]
         Antigua_and_Barbuda,
         Argentina,

@@ -141,7 +141,7 @@
                             Text="Password"
                             Style="{StaticResource textLoginDetails}" />
                         <PasswordBox
-                            x:Name="tbPassword"
+                            Name ="pbMainWindow"
                             PasswordChanged="TbPassword_OnPasswordChanged"
                             Style="{StaticResource textBox}" />
                     </Grid>

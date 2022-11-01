@@ -1,22 +1,21 @@
 ﻿using TRAVELPAL.Enums;
 
-namespace TRAVELPAL.Classes
-{
-    public class Vacation : Travel
-    {
+namespace TRAVELPAL.Classes {
+    public class Vacation : Travel {
         public bool AllInclusive { get; set; }
 
 
         public Vacation(bool allInclusive, string destination, Countries country, int travelers) : base(destination,
-            country, travelers)
-        {
+            country, travelers) {
             AllInclusive = allInclusive;
         }
 
+        public override string GetInfo() {
+            return $"Country || {Country}";
+        }
 
-        //public string GetInfo()
-        //{
-        //    return base.GetInfo();
-        //}
+        public override string GetTravelType() {
+            return "Vacation";
+        }
     }
 }

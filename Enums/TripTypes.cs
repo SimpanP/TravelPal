@@ -1,7 +1,5 @@
-﻿namespace TRAVELPAL.Enums
-{
-    public enum TripTypes
-    {
+﻿namespace TRAVELPAL.Enums {
+    public enum TripTypes {
         Leisure,
         Work
     }

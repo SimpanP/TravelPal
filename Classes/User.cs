@@ -1,27 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using TRAVELPAL.Enums;
 using TRAVELPAL.Interface;
 
-namespace TRAVELPAL.Classes
-{
-    public class User : IUser
-    {
-        public string UserName { get; set; }
+namespace TRAVELPAL.Classes {
+    public class User : IUser {
+        public List<Travel> Travels { get; set; } = new();
+        public string Username { get; set; }
         public string Password { get; set; }
         public Countries Location { get; set; }
 
-        public List<Travel> Travels { get; set; } = new();
-
-        public User(string userName, string password, Countries location, List<Travel> travels)
-        {
-            UserName = userName;
+        public User(string username, string password, Countries country) {
+            Username = username;
             Password = password;
-            Location = location;
-            Travels = travels;
+            Location = country;
         }
     }
 }

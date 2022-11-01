@@ -102,8 +102,7 @@
                     <TextBox
                         x:Name="tbUsernameReg"
                         Grid.Column="1"
-                        Height="20" 
-                        TextChanged="TbUsernameReg_OnTextChanged"/>
+                        Height="20" />
                     <PasswordBox
                         Name="pbPasswordBox"
                         Grid.Column="1"

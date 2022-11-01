@@ -1,24 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TRAVELPAL.Enums;
+﻿using TRAVELPAL.Enums;
 using TRAVELPAL.Interface;
 
-namespace TRAVELPAL.Classes
-{
-    public class Admin : IUser
-    {
-        public string UserName { get; set; }
+namespace TRAVELPAL.Classes {
+    public class Admin : IUser {
+        public string Username { get; set; }
         public string Password { get; set; }
-        public Countries Location { get; set; }
+        public Countries Location { get; set; } //TODO, cant delete this one as it's heriting from IUSER blueprint, wont be using it in the constructor below
 
-        public Admin(string userName, string password, Countries location)
-        {
-            UserName = userName;
+        public Admin(string username, string password) {
+            Username = username;
             Password = password;
-            Location = location;
         }
     }
 }

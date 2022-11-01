@@ -1,21 +1,22 @@
-﻿using TRAVELPAL.Enums;
+﻿using System.Collections.Generic;
+using TRAVELPAL.Enums;
 
-namespace TRAVELPAL.Classes
-{
-    public class Trip : Travel
-    {
+namespace TRAVELPAL.Classes {
+    public class Trip : Travel {
+        public List<Travel> travels = new();
         public TripTypes TripType { get; set; }
 
-        public Trip(TripTypes tripType, string destination, Countries country, int travelers) : base(destination,
-            country, travelers)
-        {
-            TripType = tripType;
+        public Trip(int travelers, string destination, Countries country, TripTypes tripType) : base(destination,
+            country, travelers) {
+            TripType = tripType; //TODO check if this is right
         }
 
+        public override string GetInfo() {
+            return $"Country || {base.Country}";
+        }
 
-        //public string GetInfo()
-        //{
-        //    return base.GetInfo();
-        //}
+        public override string GetTravelType() {
+            return "Triptype";
+        }
     }
 }

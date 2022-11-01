@@ -1,52 +1,52 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using TRAVELPAL.Classes;
+using TRAVELPAL.Managers;
 
-namespace TRAVELPAL
-{
+namespace TRAVELPAL {
     /// <summary>
     /// Interaction logic for TravelsWindow.xaml
     /// </summary>
-    public partial class TravelsWindow : Window
-    {
-        public TravelsWindow()
-        {
+    public partial class TravelsWindow : Window {
+        private UserManager userManager;
+        private TravelManager travelManager;
+        private User user;
+        private Travel travel;
+        public TravelsWindow(UserManager userManager, TravelManager travelManager) {
             InitializeComponent();
+            this.userManager = userManager;
+            this.travelManager = travelManager;
         }
 
-        private void btnUserDetails(object sender, RoutedEventArgs e)
-        {
-            //Shall open userDetailsWindow
+        private void btnUserDetails(object sender, RoutedEventArgs e) {
+            //TODO Shall open userDetailsWindow and show details about the user
         }
 
-        private void btnAddTravel(object sender, RoutedEventArgs e)
-        {
-            throw new NotImplementedException();
+        private void btnAddTravel(object sender, RoutedEventArgs e) {
+            //TODO Add travel and show the add travel window
+            AddTravelWindow addTravelWindow = new(travelManager, userManager);
+            addTravelWindow.Show();
+            Close();
         }
 
-        private void btnTravelDetails(object sender, RoutedEventArgs e)
-        {
-            //Opens TravelsDetailsWindow which shows the details for a specific trip
+        private void btnTravelDetails(object sender, RoutedEventArgs e) {
         }
 
-        private void btnRemoveTravel(object sender, RoutedEventArgs e)
-        {
-            //Remove travel from list
+        private void btnRemoveTravel(object sender, RoutedEventArgs e) {
+            //TODO Remove travel from list
         }
 
-        private void btnSignOut(object sender, RoutedEventArgs e)
-        {
-            //Closes current window and opens mainwindow again
+
+        //Closes current window and opens mainwindow again
+        private void btnSignOut(object sender, RoutedEventArgs e) {
+            MainWindow mainWindow = new(userManager, travelManager);
+            mainWindow.Show();
+            Close();
+
+        }
+
+        private void btnInfo(object sender, RoutedEventArgs e) {
+            //TODO Opens a messagebox which shows the details for a specific trip
+            MessageBox.Show("Welcome to the TravelPal application \\n");
         }
     }
 }
