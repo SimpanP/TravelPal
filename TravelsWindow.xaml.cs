@@ -1,5 +1,7 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Windows;
 using TRAVELPAL.Classes;
+using TRAVELPAL.Interface;
 using TRAVELPAL.Managers;
 
 namespace TRAVELPAL {
@@ -7,14 +9,18 @@ namespace TRAVELPAL {
     /// Interaction logic for TravelsWindow.xaml
     /// </summary>
     public partial class TravelsWindow : Window {
+        public List<IUser> Users;
         private UserManager userManager;
         private TravelManager travelManager;
         private User user;
         private Travel travel;
+
         public TravelsWindow(UserManager userManager, TravelManager travelManager) {
             InitializeComponent();
             this.userManager = userManager;
             this.travelManager = travelManager;
+
+            //lblUsername.Content = User.Username;
         }
 
         private void btnUserDetails(object sender, RoutedEventArgs e) {
@@ -41,7 +47,6 @@ namespace TRAVELPAL {
             MainWindow mainWindow = new(userManager, travelManager);
             mainWindow.Show();
             Close();
-
         }
 
         private void btnInfo(object sender, RoutedEventArgs e) {

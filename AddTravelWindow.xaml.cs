@@ -44,8 +44,8 @@ namespace TRAVELPAL {
 
 
         private void btnSave_Click(object sender, RoutedEventArgs e) {
-            if ((cbCountry.SelectedItem != null) && (tbDestination.SelectedText != "") && (cbTriptype != null) && (tbTravelers.Text != "")) {
-                MessageBox.Show(tbTravelers.Text);
+            if (cbCountry.SelectedItem != null && tbDestination.SelectedText != "" && cbTriptype != null &&
+                tbTravelers.Text != "") {
                 string country = cbCountry.SelectedItem as string;
                 Countries selectedCountry = (Countries)Enum.Parse(typeof(Countries), country);
 
@@ -60,7 +60,8 @@ namespace TRAVELPAL {
 
                     //Creates trip based on information user entered and saved in above method
                     travelManager.CreateVacation(destination, selectedCountry, travelers, isAllinclsive);
-                } else if (cbTriptype.SelectedIndex == 1) {
+                }
+                else if (cbTriptype.SelectedIndex == 1) {
                     string trip = cbTriptype.SelectedItem as string;
                     TripTypes selectedTrip = (TripTypes)Enum.Parse(typeof(TripTypes), trip);
                     travelManager.CreateTrip(destination, selectedCountry, travelers, selectedTrip);
@@ -69,9 +70,8 @@ namespace TRAVELPAL {
                 MainWindow mainWindow = new();
                 mainWindow.Show();
                 Close();
-
-
-            } else {
+            }
+            else {
                 MessageBox.Show("Fill in all fields idiot!");
             }
         }
@@ -84,7 +84,8 @@ namespace TRAVELPAL {
             if (selectedTravelType == "Trip") {
                 cbTriptype.Visibility = Visibility.Visible;
                 checkBoxAllInclusive.Visibility = Visibility.Hidden;
-            } else {
+            }
+            else {
                 cbTriptype.Visibility = Visibility.Hidden;
                 checkBoxAllInclusive.Visibility = Visibility.Visible;
             }

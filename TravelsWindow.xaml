@@ -24,17 +24,23 @@
         </Grid.RowDefinitions>
         
         <!--User logged in to the app-->
-        <ListView
+        <!--<ListView
             Grid.Row="6"
             Margin="5"
 
-            />
+            />-->
+        <Label
+            x:Name="lblUsername"
+            Content="Username"
+            Grid.Column="0"
+            Grid.Row ="6"
+            Width="180"
+            Height="40"/>
         <Button
             Grid.Column="0"
             Grid.Row="7"
             Content="User"
-            Style="{StaticResource btnRegisterWindow}"
-            Margin="10"
+            Style="{StaticResource secondaryButton}"
             Click="btnUserDetails"
             />
         <ListView
@@ -47,36 +53,32 @@
             Grid.Row="6"
             HorizontalAlignment="Right"
             Content="Add Travel"
-            Margin="10"
             Width="110"
-            Style="{StaticResource btnRegisterWindow}"
+            Style="{StaticResource secondaryButton}"
             Click="btnAddTravel" />
         <Button
             Grid.Column="1"
             Grid.Row="6"
             HorizontalAlignment="Left"
             Content="Remove"
-            Margin="10"
             Width="110"
-            Style="{StaticResource btnRegisterWindow}" Click="btnRemoveTravel" />
+            Style="{StaticResource secondaryButton}" Click="btnRemoveTravel" />
         <Button
             Name="btnDetails"
             Grid.Column="1"
             Grid.Row="7"
             Width="110"
             Content="Details"
-            Style="{StaticResource btnRegisterWindow}"
-            Margin="10"
+            Style="{StaticResource secondaryButton}"
             Click="btnTravelDetails"/>
         <Button
             Grid.Column="2"
             Grid.Row="7"
             Content="Sign Out"
             Width="110"
-            Style="{StaticResource btnRegisterWindow}"
+            Style="{StaticResource secondaryButton}"
             Background="LightSlateGray"
             Foreground="WhiteSmoke"
-            Margin="10"
             Click="btnSignOut"/>
         <Button
             Name ="btnInfod"
@@ -84,8 +86,8 @@
             Grid.Row="3"
             Content="Info"
             Width="110"
-            Style="{StaticResource btnRegisterWindow}"
-            Margin="10" Click="btnInfo"/>
+            Style="{StaticResource secondaryButton}"
+            Click="btnInfo"/>
 
     </Grid>
 </Window>
