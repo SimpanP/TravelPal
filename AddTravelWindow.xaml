@@ -68,6 +68,7 @@
             Name="cbTripOrVacation"
             Grid.Column="1"
             Grid.Row="3"
+            
             Height="20"
             Margin="10 0 10 0" SelectionChanged="cbTripOrVacation_SelectionChanged"/>
         <CheckBox

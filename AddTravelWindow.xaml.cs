@@ -43,42 +43,48 @@ namespace TRAVELPAL {
         }
 
 
+        //cbtriporvacation vänster
+        //cbtriptype work eller leisure
+
         private void btnSave_Click(object sender, RoutedEventArgs e) {
-            //if ((cbCountry.SelectedItem != null) && (tbDestination.Text != "") && (cbTriptype.SelectedIndex > -1) &&
-            //    (tbTravelers.Text != "")) {
-            string country = cbCountry.SelectedItem as string;
-            Countries selectedCountry = (Countries)Enum.Parse(typeof(Countries), country);
+            Console.WriteLine(cbTriptype.SelectedItem);
+            Console.WriteLine(cbTripOrVacation.SelectedItem);
 
-            string destination = tbDestination.Text;
-            int travelers = Convert.ToInt32(tbTravelers.Text);
+            if ((cbCountry.SelectedItem != null) && (tbDestination.Text != "") &&
+                (tbTravelers.Text != "") && ((cbTriptype.SelectedItem != null) || (cbTripOrVacation.SelectedItem.ToString() == "Vacation"))) {
+                string country = cbCountry.SelectedItem as string;
+                Countries selectedCountry = (Countries)Enum.Parse(typeof(Countries), country);
 
-            //Creates vacation if all inclusive IS checked
-            bool isAllinclsive = false;
-            if (cbTriptype.SelectedIndex == 0) {
-                if ((bool)checkBoxAllInclusive.IsChecked) {
-                    isAllinclsive = true;
+                string destination = tbDestination.Text;
+                int travelers = Convert.ToInt32(tbTravelers.Text);
+
+                //Creates vacation if all inclusive IS checked
+                bool isAllinclsive = false;
+                if (cbTriptype.SelectedIndex == -1) {
+                    if ((bool)checkBoxAllInclusive.IsChecked) {
+                        isAllinclsive = true;
+                    }
+                    Travel travel = travelManager.CreateVacation(destination, selectedCountry, travelers, isAllinclsive);
+                    User user = userManager.signedInUser as User;
+                    user.userTravels.Add(travel);
+                    userManager.signedInUser = user;
+                    //Creates trip based on information user entered and saved in above method
+                } else if (cbTriptype.SelectedIndex == 1) {
+                    string trip = cbTriptype.SelectedItem as string;
+                    TripTypes selectedTrip = (TripTypes)Enum.Parse(typeof(TripTypes), trip);
+                    Travel travel = travelManager.CreateTrip(destination, selectedCountry, travelers, selectedTrip);
+
+                    User user = userManager.signedInUser as User;
+                    user.userTravels.Add(travel);
+                    userManager.signedInUser = user;
                 }
-                Travel travel = travelManager.CreateVacation(destination, selectedCountry, travelers, isAllinclsive);
-                User user = userManager.signedInUser as User;
-                user.userTravels.Add(travel);
-                userManager.signedInUser = user;
-                //Creates trip based on information user entered and saved in above method
-            } else if (cbTriptype.SelectedIndex == 1) {
-                string trip = cbTriptype.SelectedItem as string;
-                TripTypes selectedTrip = (TripTypes)Enum.Parse(typeof(TripTypes), trip);
-                Travel travel = travelManager.CreateTrip(destination, selectedCountry, travelers, selectedTrip);
 
-                User user = userManager.signedInUser as User;
-                user.userTravels.Add(travel);
-                userManager.signedInUser = user;
+                TravelsWindow travelsWindow = new(userManager, travelManager);
+                travelsWindow.Show();
+                Close();
+            } else {
+                MessageBox.Show("Fill in all fields idiot!");
             }
-
-            TravelsWindow travelsWindow = new(userManager, travelManager);
-            travelsWindow.Show();
-            Close();
-            //} else {
-            //    MessageBox.Show("Fill in all fields idiot!");
-            //}
         }
 
         private void cbTripOrVacation_SelectionChanged(object sender,

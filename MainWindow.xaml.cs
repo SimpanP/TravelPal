@@ -31,8 +31,8 @@ namespace TRAVELPAL {
 
         public MainWindow(UserManager userManager, TravelManager travelManager) {
             InitializeComponent();
-            this.userManager = new();
-            this.travelManager = new();
+            this.userManager = userManager;
+            this.travelManager = travelManager;
         }
 
 
