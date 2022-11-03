@@ -16,7 +16,11 @@ namespace TRAVELPAL.Classes {
         }
 
         public override string GetTravelType() {
-            return "Triptype";
+            return "Trip";
+        }
+
+        public override string GetTravelInfo() {
+            return $"{TripType}";
         }
     }
 }

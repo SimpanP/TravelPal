@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using TRAVELPAL.Classes;
 using TRAVELPAL.Enums;
 using TRAVELPAL.Managers;
 
@@ -13,10 +14,12 @@ namespace TRAVELPAL {
         public EuropeanCountries europeanCountries = new();
         private UserManager userManager = new();
         private TravelManager travelManager = new();
+        private User users;
 
-        public RegisterWindow(TravelManager travelManager, UserManager userManager) {
+        public RegisterWindow(UserManager userManager, TravelManager travelManager) {
             InitializeComponent();
-
+            this.userManager = userManager;
+            this.travelManager = travelManager;
 
             //Populating the combobox with the countries
             string[] countries = Enum.GetNames(typeof(Countries));
@@ -28,9 +31,6 @@ namespace TRAVELPAL {
             if (!string.IsNullOrEmpty(tbUsernameReg.Text)) {
                 MessageBox.Show("The field can not be empty!");
             }
-
-            this.travelManager = travelManager;
-            this.userManager = userManager;
         }
 
 
@@ -46,21 +46,23 @@ namespace TRAVELPAL {
         private void BtnRegister_OnClick(object sender, RoutedEventArgs e) {
             string username = tbUsernameReg.Text;
             string password = pbPasswordBox.Password;
-            string country = cbCountry.Text;
-            //Converting country to a string to be able to save it
-            Countries selectedCountry = (Countries)Enum.Parse(typeof(Countries), country);
 
 
             //Check if user already exists / else add the user to the application
 
-            if (username.Length == 0 || password.Length == 0 || country.Length == 0) {
-                MessageBox.Show("User already exists or you've not filled in all fields");
-            } else if (userManager.AddUser(username, password, selectedCountry)) {
-                MainWindow mainWindow = new(userManager, travelManager);
-                mainWindow.Show();
-                Close();
+            if (userManager.UpdateUsername(users, username) && userManager.IsCheckPassword(password)) {
+                string country = cbCountry.Text;
+                //Converting country to a string to be able to save it
+                Countries selectedCountry = (Countries)Enum.Parse(typeof(Countries), country);
+
+                if (userManager.AddUser(username, password, selectedCountry)) {
+                    MainWindow mainWindow = new(userManager, travelManager);
+                    mainWindow.Show();
+                    Close();
+                }
             }
         }
+
         private void tbConfirmPassword_OnTextChanged(object sender, TextChangedEventArgs e) {
             throw new NotImplementedException();
         }

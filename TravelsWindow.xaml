@@ -30,7 +30,7 @@
 
             />-->
         <Label
-            x:Name="lblUsername"
+            x:Name="lblUser"
             Content="Username"
             Grid.Column="0"
             Grid.Row ="6"
@@ -44,11 +44,13 @@
             Click="btnUserDetails"
             />
         <ListView
+            Name="lvTravelInfo"
             Grid.Column="1"
             Grid.RowSpan="4"
             Grid.Row="2"
             Background="SlateGray"/>
         <Button
+            Name="btnAddTravels"
             Grid.Column="1"
             Grid.Row="6"
             HorizontalAlignment="Right"

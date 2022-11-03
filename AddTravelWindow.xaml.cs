@@ -44,36 +44,41 @@ namespace TRAVELPAL {
 
 
         private void btnSave_Click(object sender, RoutedEventArgs e) {
-            if (cbCountry.SelectedItem != null && tbDestination.SelectedText != "" && cbTriptype != null &&
-                tbTravelers.Text != "") {
-                string country = cbCountry.SelectedItem as string;
-                Countries selectedCountry = (Countries)Enum.Parse(typeof(Countries), country);
+            //if ((cbCountry.SelectedItem != null) && (tbDestination.Text != "") && (cbTriptype.SelectedIndex > -1) &&
+            //    (tbTravelers.Text != "")) {
+            string country = cbCountry.SelectedItem as string;
+            Countries selectedCountry = (Countries)Enum.Parse(typeof(Countries), country);
 
-                string destination = tbDestination.SelectedText as string;
-                int travelers = Convert.ToInt32(tbTravelers.Text);
+            string destination = tbDestination.Text;
+            int travelers = Convert.ToInt32(tbTravelers.Text);
 
-                bool isAllinclsive = false;
-                if (cbTriptype.SelectedIndex == 0) {
-                    if ((bool)checkBoxAllInclusive.IsChecked) {
-                        isAllinclsive = true;
-                    }
-
-                    //Creates trip based on information user entered and saved in above method
-                    travelManager.CreateVacation(destination, selectedCountry, travelers, isAllinclsive);
+            //Creates vacation if all inclusive IS checked
+            bool isAllinclsive = false;
+            if (cbTriptype.SelectedIndex == 0) {
+                if ((bool)checkBoxAllInclusive.IsChecked) {
+                    isAllinclsive = true;
                 }
-                else if (cbTriptype.SelectedIndex == 1) {
-                    string trip = cbTriptype.SelectedItem as string;
-                    TripTypes selectedTrip = (TripTypes)Enum.Parse(typeof(TripTypes), trip);
-                    travelManager.CreateTrip(destination, selectedCountry, travelers, selectedTrip);
-                }
+                Travel travel = travelManager.CreateVacation(destination, selectedCountry, travelers, isAllinclsive);
+                User user = userManager.signedInUser as User;
+                user.userTravels.Add(travel);
+                userManager.signedInUser = user;
+                //Creates trip based on information user entered and saved in above method
+            } else if (cbTriptype.SelectedIndex == 1) {
+                string trip = cbTriptype.SelectedItem as string;
+                TripTypes selectedTrip = (TripTypes)Enum.Parse(typeof(TripTypes), trip);
+                Travel travel = travelManager.CreateTrip(destination, selectedCountry, travelers, selectedTrip);
 
-                MainWindow mainWindow = new();
-                mainWindow.Show();
-                Close();
+                User user = userManager.signedInUser as User;
+                user.userTravels.Add(travel);
+                userManager.signedInUser = user;
             }
-            else {
-                MessageBox.Show("Fill in all fields idiot!");
-            }
+
+            TravelsWindow travelsWindow = new(userManager, travelManager);
+            travelsWindow.Show();
+            Close();
+            //} else {
+            //    MessageBox.Show("Fill in all fields idiot!");
+            //}
         }
 
         private void cbTripOrVacation_SelectionChanged(object sender,
@@ -84,8 +89,7 @@ namespace TRAVELPAL {
             if (selectedTravelType == "Trip") {
                 cbTriptype.Visibility = Visibility.Visible;
                 checkBoxAllInclusive.Visibility = Visibility.Hidden;
-            }
-            else {
+            } else {
                 cbTriptype.Visibility = Visibility.Hidden;
                 checkBoxAllInclusive.Visibility = Visibility.Visible;
             }

@@ -32,14 +32,14 @@
             Grid.Column="3"
             Grid.Row="3"
             Style="{StaticResource secondaryButton}"
-            Content="Save"
+            Content="Save" Click="btnSave_Click"
             />
         <Button 
             Name="btnCancel"
             Grid.Column="2"
             Grid.Row="3"
             Style="{StaticResource secondaryButton}"
-            Content="Cancel"
+            Content="Cancel" Click="btnCancel_Click"
         />
 
         <!--Textblocks for textinfo-->

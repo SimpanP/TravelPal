@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using TRAVELPAL.Classes;
 using TRAVELPAL.Interface;
 using TRAVELPAL.Managers;
 
@@ -10,20 +11,33 @@ namespace TRAVELPAL {
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
-        private UserManager userManager = new();
-        private TravelManager travelManager = new();
+        private UserManager userManager;
+        private TravelManager travelManager;
 
         public MainWindow() {
             InitializeComponent();
             userManager = new();
+            travelManager = new();
+
+            foreach (IUser iUser in userManager.users) {
+                if (iUser is User) {
+                    User user = iUser as User;
+                    travelManager.travels.AddRange(user.userTravels);
+                }
+            }
         }
 
 
-        //Trial and error
+
         public MainWindow(UserManager userManager, TravelManager travelManager) {
             InitializeComponent();
+            this.userManager = new();
+            this.travelManager = new();
         }
 
+
+
+        //Design on the textboxes
         private void TextUserName_OnMouseDown(object sender, MouseButtonEventArgs e) {
             tbUsername.Focus();
         }
@@ -52,21 +66,19 @@ namespace TRAVELPAL {
 
         private void SignInButton_Click(object sender, RoutedEventArgs e) {
             //TODO, create a new window and open this, send information with the user
+            List<IUser> users = userManager.GetAllUsers();
             string username = tbUsername.Text;
             string password = pbMainWindow.Password;
-
-            List<IUser> users = userManager.GetAllUsers();
 
             bool userFound = false;
 
             foreach (IUser user in users) {
-
                 if (user.Username == username && user.Password == password) {
                     userFound = true;
                     userManager.signedInUser = user;
                     TravelsWindow travelsWindow = new TravelsWindow(userManager, travelManager);
                     travelsWindow.Show();
-                    Close();
+                    Hide();
                 }
             }
 
@@ -81,9 +93,10 @@ namespace TRAVELPAL {
 
         //open new register window and closes current window
         private void SignUpButton_Click(object sender, RoutedEventArgs e) {
-            RegisterWindow registerWindow = new(travelManager, userManager); //TODO
-            Hide();
+            RegisterWindow registerWindow = new(userManager, travelManager); //TODO
             registerWindow.Show();
+            Hide();
+
         }
     }
 }

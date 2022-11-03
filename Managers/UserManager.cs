@@ -12,7 +12,7 @@ namespace TRAVELPAL.Managers {
         //TODO : Add admin to the application upon startup. // done
 
 
-        public List<IUser> users { get; set; } = new();
+        public List<IUser> users = new();
         public IUser signedInUser { get; set; }
 
         public UserManager() {
@@ -30,24 +30,33 @@ namespace TRAVELPAL.Managers {
         //Adding Gandalf with the hard coded trip in the application
         public void AddGandalf() {
             //TODO add Gandalf to the list and dedicate two trips for hím in the manager
-            User gandalf = new("Gandalf", "password", Countries.Swaziland); //TODO Countries fucks up my code
-            Vacation vacation = new Vacation(true, "Spain", Countries.Barbados, 6);
+            User gandalf = new("Gandalf", "password", Countries.Swaziland);
+            Vacation gandalfVacation = new Vacation(true, "Spain", Countries.Barbados, 6);
+            Trip gandalfTrip = new(3, "Poland", Countries.Argentina, TripTypes.Work);
             users.Add(gandalf);
+            //TODO add vacation and trip
+            gandalf.userTravels.Add(gandalfVacation);
+            gandalf.userTravels.Add(gandalfTrip);
+
         }
 
+        public bool IsCheckPassword(string password) {
+            if (password.Length < 5) {
+                MessageBox.Show("Minimum requirement 5 characters");
+                return false;
+            }
 
-        public bool AddUser(string username, string password, Countries countries) {
+            return true;
+        }
+
+        public bool AddUser(string username, string password, Countries country) {
             if (ValidateUsername(username)) {
-                User user = new(username, password, countries);
+                User user = new(username, password, country);
                 users.Add(user);
                 return true;
             }
 
             return false;
-        }
-
-        private void RemoveUser(string username, string password, Countries countries) {
-            //TODO remove a normal user
         }
 
         //Updates the username and checks all criterias
@@ -74,12 +83,12 @@ namespace TRAVELPAL.Managers {
             if (password.Length < 5) {
                 MessageBox.Show("Minimum password length is 5");
                 return false;
-            }
-
-            if (confirmPassword == null) {
+            } else if (string.IsNullOrEmpty(password)) {
+                MessageBox.Show("You need to enter as password");
                 return false;
+            } else if (password != confirmPassword) {
+                MessageBox.Show("Passwords does not match");
             }
-
             return true;
         }
 
@@ -91,10 +100,6 @@ namespace TRAVELPAL.Managers {
                 }
             }
 
-            return true;
-        }
-
-        public bool SignInUser(string username, string password) {
             return true;
         }
 

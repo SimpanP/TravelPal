@@ -4,7 +4,8 @@ using TRAVELPAL.Interface;
 
 namespace TRAVELPAL.Classes {
     public class User : IUser {
-        public List<Travel> Travels { get; set; } = new();
+        public List<Travel> userTravels = new();
+        public List<Travel> users = new();
         public string Username { get; set; }
         public string Password { get; set; }
         public Countries Location { get; set; }

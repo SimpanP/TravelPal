@@ -1,24 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using TRAVELPAL.Classes;
+using TRAVELPAL.Managers;
 
 namespace TRAVELPAL {
     /// <summary>
     /// Interaction logic for TravelDetailWindow.xaml
     /// </summary>
     public partial class TravelDetailWindow : Window {
-        public TravelDetailWindow() {
+        private UserManager userManager;
+        private TravelManager travelManager;
+
+        public TravelDetailWindow(UserManager userManager, TravelManager travelManager, Travel travel) {
             InitializeComponent();
+            this.userManager = userManager;
+            this.travelManager = travelManager;
+
+            tbCountry.Text = travel.Country.ToString();
+            tbDestination.Text = travel.Destination;
+            tbTravelers.Text = travel.Travelers.ToString();
+            tbTravelType.Text = travel.GetTravelType();
+            tbTravelInfo.Text = travel.GetTravelInfo();
+        }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e) {
+            TravelsWindow travelsWindow = new(userManager, travelManager);
+            travelsWindow.Show();
+            Close();
         }
     }
 }

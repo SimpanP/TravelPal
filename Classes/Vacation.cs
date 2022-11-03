@@ -17,5 +17,13 @@ namespace TRAVELPAL.Classes {
         public override string GetTravelType() {
             return "Vacation";
         }
+
+        public override string GetTravelInfo() {
+            if (AllInclusive) {
+                return "All Inclusive";
+            } else {
+                return "Not all inclusive";
+            }
+        }
     }
 }
