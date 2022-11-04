@@ -7,6 +7,8 @@ namespace TRAVELPAL.Managers {
 
         public List<Travel> travels = new();
 
+        //All below creates the different vacation/trips differs with the triptype and if all inclusive or not
+
         public Travel AddTravel(string destination, Countries countries, int travelers, TripTypes tripType) {
             return AddTravel(destination, countries, travelers, tripType);
         }

@@ -23,7 +23,7 @@ namespace TRAVELPAL.Managers {
 
         //hard coding in the admin user as per described in the instructions so generic login can be used
         public void AddAdminUser() {
-            Admin admin = new("Admin", "password");
+            Admin admin = new("admin", "password");
             users.Add(admin);
         }
 
@@ -40,6 +40,7 @@ namespace TRAVELPAL.Managers {
 
         }
 
+        //Checks so password meets minimum requirement
         public bool IsCheckPassword(string password) {
             if (password.Length < 5) {
                 MessageBox.Show("Minimum requirement 5 characters");
@@ -49,6 +50,7 @@ namespace TRAVELPAL.Managers {
             return true;
         }
 
+        //validates and adds user to the list with username, password and what country the users from
         public bool AddUser(string username, string password, Countries country) {
             if (ValidateUsername(username)) {
                 User user = new(username, password, country);
@@ -92,7 +94,7 @@ namespace TRAVELPAL.Managers {
             return true;
         }
 
-
+        //Validates in the AddUser method
         private bool ValidateUsername(string username) {
             foreach (var user in users) {
                 if (user.Username == username) {

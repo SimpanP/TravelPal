@@ -21,6 +21,7 @@ namespace TRAVELPAL {
             this.userManager = userManager;
             this.travelManager = travelManager;
 
+            //Checks what user is signed in
             if (this.userManager.signedInUser is User) {
                 user = (User)this.userManager.signedInUser;
                 lblUser.Content = $"Welcome {user.Username}";

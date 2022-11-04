@@ -50,7 +50,6 @@ namespace TRAVELPAL {
             }
         }
 
-
         private void TextPassword_OnMouseDown(object sender, MouseButtonEventArgs e) {
             pbMainWindow.Focus();
         }

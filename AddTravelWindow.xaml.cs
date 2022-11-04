@@ -50,6 +50,8 @@ namespace TRAVELPAL {
             Console.WriteLine(cbTriptype.SelectedItem);
             Console.WriteLine(cbTripOrVacation.SelectedItem);
 
+            //Checks so everything is filled in (with the if statement)
+
             if ((cbCountry.SelectedItem != null) && (tbDestination.Text != "") &&
                 (tbTravelers.Text != "") && ((cbTriptype.SelectedItem != null) || (cbTripOrVacation.SelectedItem.ToString() == "Vacation"))) {
                 string country = cbCountry.SelectedItem as string;
